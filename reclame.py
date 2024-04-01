@@ -1,12 +1,17 @@
 from algemene_functies import mijn_functie_2
 
 def aanbieding_1 (smaak, prijs, korting):
-    if smaak == "aardbei" and prijs == 4 and korting == 0.1:
-        return f"Vandaag in de aanbieding: emmertje ijs (1 liter) in de smaak {smaak}, van {prijs} euro voor {prijs-(prijs*korting)} euro."
+    prijs_na_korting=prijs*(1-korting)
+    uitvoer_aanbieding_1 =  f"Vandaag in de aanbieding: emmertje ijs (1 liter) in de smaak {smaak}, van {prijs} euro voor {prijs_na_korting} euro."
+    return uitvoer_aanbieding_1
     
 def inkomsten_totaal (inkomsten, btw):
-    totaal = sum(inkomsten)
-    return f"Het totaal van alle inkomsten van deze week is {totaal} euro, waarover {totaal*btw} euro btw betaald dient te worden."
+    totaal = 0
+    for bedrag in inkomsten:
+        totaal+=bedrag
+        btw_bedrag=totaal*btw
+        uitvoer_inkomsten_totaal = f"Het totaal van alle inkomsten van deze week is {totaal} euro, waarover {btw_bedrag} euro btw betaald dient te worden."
+        return totaal
 
 def laag_en_hoog (mijn_lijst):
     uitersten = [max(mijn_lijst), min(mijn_lijst)]
